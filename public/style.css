@@ -59,6 +59,11 @@ header {
   flex-direction: column;
   padding-top: 14rem
 }
+#students{
+  display: flex;
+  flex-direction: column;
+  padding-top: 14rem
+}
 #campus>div{
   display: flex;
   flex-wrap: wrap;

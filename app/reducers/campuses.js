@@ -1,6 +1,6 @@
 
 import axios from 'axios';
-
+import history from '../history';
 
 // ACTION TYPES
 
@@ -61,10 +61,9 @@ export const getCampuses = () => dispatch => {
 };
 
 export const addCampus = (campus, history) => dispatch => {
-  axios.post('/api/campuses', campus)
+  axios.post('/api/campuses/new-campus', campus)
     .then(res => dispatch(addCampusCreator(res.data)))
     .catch(err => console.error(`Could not post campus:`, err))
-  history.push(`/campuses/${campus.id}`);
 }
 
 

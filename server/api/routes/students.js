@@ -1,6 +1,8 @@
 const studentRouter = require('express').Router()
 const db = require('../../db')
 const Student = require('../../db/models/student')
+const Campus = require('../../db/models/campus')
+
 
 studentRouter.get('/', (req, res) => {
   Student.findAll()
@@ -23,7 +25,8 @@ studentRouter.post('/', (req, res) => {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email,
-    gpa: +req.body.gpa
+    gpa: +req.body.gpa,
+    campusId: +req.body.campusId
   })
   .then(student => res.json(student))
   .catch(err => res.send(err))

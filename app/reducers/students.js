@@ -59,21 +59,20 @@ export const getStudents = () => dispatch => {
     .catch(err => console.error(`Could not find students:`, err))
 };
 
-export const addStudent = (student, history) => dispatch => {
+export const addStudent = (student) => dispatch => {
   axios.post('/api/students', student)
     .then(res => dispatch(addStudentCreator(res.data)))
     .catch(err => console.error(`Could not post student:`, err))
-  history.push(`/students/${student.id}`);
 }
 
 
-export const updatestudent = (student) => dispatch => {
+export const updateStudent = (student) => dispatch => {
   axios.put(`/api/students/${student.id}`, student)
     .then(res => dispatch(updateStudentCreator(res.data)))
     .catch(err => console.error(`Could not update student:`, err))
 }
-export const deletestudent = (id) => dispatch => {
-  dispatch(deletestudentCreator(id))
+export const deleteStudent = (id) => dispatch => {
+  dispatch(deleteStudentCreator(id))
   axios.delete(`/api/students/${id}`, student)
     .then(res => dispatch(updateStudentCreator(res.data)))
     .catch(err => console.error(`Removing user: ${id} unsuccessful`, err))}

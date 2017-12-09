@@ -1,12 +1,13 @@
 const campusRouter = require('express').Router()
 const db = require('../../db')
 const Campus = require('../../db/models/campus')
+const Student = require('../../db/models/student')
 
 campusRouter.get('/', (req, res) => {
   console.log("trying to get campuses")
-  Campus.findAll()
+  Campus.findAll({ include: [{ model: Student, as: 'Students' }] })
   .then(campuses => res.json(campuses))
-  .catch(err => res.error(err))
+  .catch(err => res.send(err))
 });
 
 campusRouter.get('/:id', (req, res) => {
@@ -16,17 +17,18 @@ campusRouter.get('/:id', (req, res) => {
     }
   })
   .then(campus => res.json(campus))
-  .catch(err => res.error(err))
+  .catch(err => res.send(err))
 })
 
-campusRouter.post('/campuses', (req, res) => {
+campusRouter.post('/new-campus', (req, res) => {
+  console.log('got to server side!')
   Campus.create({
     name: req.body.name,
     imgUrl: req.body.imgUrl,
     description: req.body.description
   })
   .then(campus => res.json(campus))
-  .catch(err => res.error(err))
+  .catch(err => res.send(err))
 })
 
 campusRouter.put('/:id', (req, res) => {
@@ -43,7 +45,7 @@ campusRouter.put('/:id', (req, res) => {
     })
   })
   .then(result => res.json(result))
-  .catch(err => res.error(err))
+  .catch(err => res.send(err))
 })
 campusRouter.delete('/:id', (req, res) => {
   Campus.findOne({
@@ -55,7 +57,7 @@ campusRouter.delete('/:id', (req, res) => {
      return campus.destroy({force: true})
      })
    .then((result)=> res.json('this record no longer exists'))
-   .catch(err => res.error(err))
+   .catch(err => res.send(err))
  })
 
 module.exports = campusRouter
