@@ -11,6 +11,7 @@ studentRouter.get('/', (req, res) => {
 })
 
 studentRouter.get('/:id', (req, res) => {
+  console.log('reached server side')
   Student.findOne({
     where: {
       id: +req.params.id

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { addCampus, deleteCampus } from '../../reducers/campuses';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 
 
 class AllCampuses extends React.Component {
@@ -108,4 +108,4 @@ const mapState = (state) => {
 
 const mapDispatch = { addCampus, deleteCampus };
 
-export default connect(mapState, mapDispatch)(AllCampuses)
+export default withRouter(connect(mapState, mapDispatch)(AllCampuses))

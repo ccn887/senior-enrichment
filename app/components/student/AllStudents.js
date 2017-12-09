@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router'
+import { withRouter } from 'react-router'
 import { addStudent, deleteStudent } from '../../reducers/students';
 import { NavLink } from 'react-router-dom';
-
 /* -----------------    COMPONENT     ------------------ */
 
 class AllStudents extends React.Component {
@@ -30,6 +29,7 @@ class AllStudents extends React.Component {
     return (
       <section id="students">
       {students.map(student => {
+        console.log('id!', student.id)
 
         return (
           <div key={student.id}>
@@ -145,4 +145,4 @@ const mapState = (state) => {
 
 const mapDispatch = {addStudent, deleteStudent }
 
-export default connect(mapState, mapDispatch)(AllStudents);
+export default withRouter(connect(mapState, mapDispatch)(AllStudents))

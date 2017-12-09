@@ -4,6 +4,7 @@ import axios from 'axios';
 // ACTION TYPES
 
 const GET_STUDENTS = 'GET_STUDENTS';
+const GET_STUDENT = 'GET_STUDENT';
 const UPDATE_STUDENT = 'UPDATE_STUDENT';
 const ADD_STUDENT = 'ADD_STUDENT ';
 const DELETE_STUDENT = 'DELETE_STUDENT';
@@ -13,6 +14,11 @@ const DELETE_STUDENT = 'DELETE_STUDENT';
 
 export function getStudentsCreator(students) {
   const action = { type: GET_STUDENTS, students };
+  return action;
+}
+
+export function getStudentCreator(student) {
+  const action = { type: GET_STUDENT, student };
   return action;
 }
 export function addStudentCreator(student) {
@@ -36,6 +42,8 @@ export default function reducer(students = [], action) {
 
     case GET_STUDENTS:
       return action.students;
+    case GET_STUDENT:
+      return action.student;
 
     case ADD_STUDENT:
       return [...students, action.student];
@@ -59,6 +67,13 @@ export const getStudents = () => dispatch => {
     .catch(err => console.error(`Could not find students:`, err))
 };
 
+export const getStudent = () => dispatch => {
+  console.log("trying to get student in axios")
+  axios.get(`/api/students/${student.id}`)
+    .then(res => dispatch(getStudentCreator(res.data)))
+    .catch(err => console.error(`Could not find students:`, err))
+};
+
 export const addStudent = (student) => dispatch => {
   axios.post('/api/students', student)
     .then(res => dispatch(addStudentCreator(res.data)))
@@ -71,8 +86,10 @@ export const updateStudent = (student) => dispatch => {
     .then(res => dispatch(updateStudentCreator(res.data)))
     .catch(err => console.error(`Could not update student:`, err))
 }
-export const deleteStudent = (id) => dispatch => {console.log('deleting student # :', id)
+export const deleteStudent = (id) => dispatch => {
+  console.log('deleting student # :', id)
   dispatch(deleteStudentCreator(id))
   axios.delete(`/api/students/${id}`)
     .then(res => dispatch(updateStudentCreator(res.data)))
-    .catch(err => console.error(`Removing user: ${id} unsuccessful`, err))}
+    .catch(err => console.error(`Removing user: ${id} unsuccessful`, err))
+}

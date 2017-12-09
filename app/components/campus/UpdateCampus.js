@@ -5,9 +5,18 @@ import { NavLink, withRouter } from 'react-router-dom';
 
 /* -----------------    COMPONENT     ------------------ */
 
-class CampusDetail extends React.Component {
+class UpdateCampus extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+        campus: {
+          name: '',
+        imageUrl: '',
+        description: ''
+      }
+    }
+    this.onCampusUpdate = this.onCampusUpdate.bind(this);
+
   }
 
   componentWillReceiveProps (newProps, oldProps) {
@@ -23,8 +32,8 @@ class CampusDetail extends React.Component {
     const campusId = Number(this.props.match.params.campusId)
     const studentsForCampus = students.filter(student => student.campusId === campusId);
     const currentCampus = campuses.filter(campus => campus.id === campusId);
-    console.log('studentsForCampus', studentsForCampus)
     const deleteCampus = this.props.deleteCampus
+    // const updateCampus = this.props.updateCampus
     const currentCamp = currentCampus[0]
 
     return (
@@ -34,7 +43,6 @@ class CampusDetail extends React.Component {
           <h3 className="campus-name">{currentCamp.name}</h3>
           <p className="campus-info">{currentCamp.description}</p>
         </div>
-        <NavLink to={`/campuses/update/${currentCamp.id}`}>Update Campus Information</NavLink>
       <button
       onClick={() => deleteCampus(currentCampus.id) }
       >Delete Campus</button>
@@ -68,4 +76,4 @@ const mapState = (state) => {
 
 const mapDispatch = {deleteCampus, updateCampus}
 
-export default withRouter(connect(mapState, mapDispatch)(CampusDetail));
+export default withRouter(connect(mapState, mapDispatch)(UpdateCampus));

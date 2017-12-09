@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import { updateCampus, fetchCampus } from '../../reducers/campuses';
-// import { Link } from 'react-router-dom';
-
+import { getStudent } from '../../reducers/campuses';
+import { withRouter } from 'react-router';
 /* -----------------    COMPONENT     ------------------ */
 
 class StudentDetail extends React.Component {
@@ -13,14 +12,17 @@ class StudentDetail extends React.Component {
     // this.renderRawHTML = this.renderRawHTML.bind(this);
   }
 
-  componentDidMount () {
-    // this.props.fetchStoryData();
-  }
+  // componentDidMount () {
+  //   console.log('im trying to render')
+
+  //   this.props.getStudent();
+  // }
 
 
 
 
   render() {
+    console.log('im trying to render')
      return <h1> Here is one student!</h1>
   }
 }
@@ -29,11 +31,14 @@ class StudentDetail extends React.Component {
 
 /* -----------------    CONTAINER     ------------------ */
 
-const mapState = null
+const mapState = (state) => {
+  // return {
+  //   students: state.students,
+  //   campuses: state.campuses
+  // }
+};
 
-const mapDispatch = (dispatch, ownProps) => {
-  return {
+const mapDispatch = {getStudent}
 
-    }}
 
-export default connect(mapState, mapDispatch)(StudentDetail);
+export default withRouter(connect(mapState, mapDispatch)(StudentDetail));

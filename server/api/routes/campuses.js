@@ -31,7 +31,7 @@ campusRouter.post('/new-campus', (req, res) => {
   .catch(err => res.send(err))
 })
 
-campusRouter.put('/:id', (req, res) => {
+campusRouter.put('/update/:id', (req, res) => {
  Campus.findOne({
     where: {
       id: +req.params.id
