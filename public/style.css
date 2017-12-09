@@ -1,0 +1,88 @@
+*{
+  box-sizing: border-box
+}
+/* body {
+  background-image: url('http://www.holtz.org/Library/Images/Slideshows/Gallery/Cosmic/Large%20Megallanic%20Cloud%20region%20LH95.jpg');
+  opacity: .7;
+} */
+
+
+
+header>nav{
+  display: flex;
+  font-family: 'Josefin Sans', sans-serif;
+  color: whitesmoke;
+  font-size: 3rem;
+  text-decoration: none;
+  }
+.nav-item a {
+  text-decoration: none;
+  color: black;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1.5rem;
+  justify-content: space-around;
+  padding: 1rem;
+  padding-top: 2rem;
+}
+header {
+  display: flex;
+  background-color: rgb(197, 225, 233);
+  justify-content: space-between;
+  width: 100%;
+  height: 8rem;
+  position: fixed;
+  z-index: 0;
+  opacity: .5;
+}
+.logo > img {
+  height: 8rem;
+  opacity: 1;
+}
+#title {
+  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Cinzel', serif;
+  font-size: 1.75rem;
+  padding-top: 3rem;
+  color: black;
+  position: absolute;
+  z-index: 1;
+  height: 4vh;
+  right: 0;
+  left: 22vw
+}
+#campus-pic {
+  height: 40vh;
+  width: 25vw;
+}
+#campus{
+  display: flex;
+  flex-direction: column;
+  padding-top: 14rem
+}
+#campus>div{
+  display: flex;
+  flex-wrap: wrap;
+}
+#campus .campus-profile {
+  flex: 0 0 50%;
+  text-align: center;
+  padding: 10px;
+}
+#campus .campus-wrapper {
+}
+
+#campus .campus-name{
+  align-self: center;
+  text-align: center;
+  color: black;
+  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+}
+#campus .campus-info {
+  flex-direction: row;
+   flex-wrap: wrap;
+   color: black;
+   font-family: 'Josefin Sans', sans-serif;
+   font-size: 1rem;
+}

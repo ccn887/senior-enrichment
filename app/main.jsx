@@ -2,13 +2,16 @@
 import React from 'react'
 import {render} from 'react-dom'
 import { Provider } from 'react-redux'
-
 import store from './store'
-import Root from './components/Root'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import Routes from './Routes'
 
-render (
+render(
   <Provider store={store}>
-    <Root/>
-  </Provider>,
-  document.getElementById('main')
-)
+  <Router>
+    <Routes />
+    </Router>
+    </Provider>,
+    document.getElementById('main')
+  );
+
