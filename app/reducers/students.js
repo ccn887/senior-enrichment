@@ -71,8 +71,8 @@ export const updateStudent = (student) => dispatch => {
     .then(res => dispatch(updateStudentCreator(res.data)))
     .catch(err => console.error(`Could not update student:`, err))
 }
-export const deleteStudent = (id) => dispatch => {
+export const deleteStudent = (id) => dispatch => {console.log('deleting student # :', id)
   dispatch(deleteStudentCreator(id))
-  axios.delete(`/api/students/${id}`, student)
+  axios.delete(`/api/students/${id}`)
     .then(res => dispatch(updateStudentCreator(res.data)))
     .catch(err => console.error(`Removing user: ${id} unsuccessful`, err))}

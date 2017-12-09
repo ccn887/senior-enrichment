@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router'
 import { addStudent, deleteStudent } from '../../reducers/students';
-// import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 /* -----------------    COMPONENT     ------------------ */
 
@@ -18,7 +18,6 @@ class AllStudents extends React.Component {
       campusId: null
     }
     this.submit = this.submit.bind(this);
-    this.removeStudentHandler = this.removeStudentHandler.bind(this)
   }
 
   render() {
@@ -26,6 +25,7 @@ class AllStudents extends React.Component {
     const students = this.props.students
     console.log('students:', students)
     const campuses = (student) => this.props.campuses.filter(campus => campus.id === student.campusId)
+    const deleteStudent = this.props.deleteStudent
 
     return (
       <section id="students">
@@ -33,6 +33,7 @@ class AllStudents extends React.Component {
 
         return (
           <div key={student.id}>
+          <NavLink to={`/students/${student.id}`}>
             <div className="student-profile">
               <div className="student-wrapper">
                 <img id="student-pic" src={student.imageUrl} />
@@ -40,12 +41,12 @@ class AllStudents extends React.Component {
                 <h4 className="student-info"> Email Address: {student.email}</h4>
                 <h4 className="student-info"> Current GPA: {student.gpa}</h4>
                 <h4 className="student-info"> Attending: {campuses(student)[0].name}</h4>
+                </div>
+                </div>
+                </NavLink>
                 <button
-                className="btn btn-default"
-                onClick={this.removeStudentHandler(event, student.id)}
+                onClick={() => deleteStudent(student.id) }
                 >Delete Student</button>
-              </div>
-            </div>
           </div>
         )
       })}
@@ -109,10 +110,7 @@ class AllStudents extends React.Component {
       </div>
       )}
 
-      removeStudentHandler (event, studentId) {
-        event.stopPropagation();
-        this.props.deleteStudent(studentId);
-      }
+
 
   submit(event) {
     event.preventDefault();

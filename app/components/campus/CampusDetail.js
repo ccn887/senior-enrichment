@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import { updateCampus, fetchCampus } from '../../reducers/campuses';
+import { updateCampus } from '../../reducers/campuses';
 // import { Link } from 'react-router-dom';
 
 /* -----------------    COMPONENT     ------------------ */
@@ -8,19 +8,27 @@ import { connect } from 'react-redux';
 class CampusDetail extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+        campus: {
+          name: '',
+        imageUrl: '',
+        description: ''
+      }
+    }
+    this.onCampusUpdate = this.onCampusUpdate.bind(this);
 
-    // this.onStoryUpdate = this.onStoryUpdate.bind(this);
-    // this.renderRawHTML = this.renderRawHTML.bind(this);
   }
 
-  componentDidMount () {
-    // this.props.fetchStoryData();
+  componentWillReceiveProps (newProps, oldProps) {
+    this.setState({
+      campus: newProps.campus
+    });
   }
-
-
 
 
   render() {
+    const {students, campuses} = this.props;
+    const campus = this.state.campus
      return <h1> Here is one campus!</h1>
   }
 }
@@ -29,7 +37,12 @@ class CampusDetail extends React.Component {
 
 /* -----------------    CONTAINER     ------------------ */
 
-const mapState = null
+const mapState = (state) => {
+  return {
+    students: state.students,
+    campuses: state.campuses
+  }
+};
 
 const mapDispatch = (dispatch, ownProps) => {
   return {

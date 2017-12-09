@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { addCampus } from '../../reducers/campuses';
-// import { NavLink } from 'react-router-dom';
+import { addCampus, deleteCampus } from '../../reducers/campuses';
+import { NavLink } from 'react-router-dom';
 
 
 class AllCampuses extends React.Component {
@@ -20,6 +20,7 @@ render(){
   const newCampus = this.state
   const campuses = this.props.campuses
   console.log("campuses:", campuses)
+  const deleteCampus = this.props.deleteCampus
 
 return (
     <section id="campus">
@@ -27,6 +28,7 @@ return (
       console.log("url:", campus.imageUrl)
     return(
       <div key={campus.id}>>
+      <NavLink to={`/campuses/${campus.id}`}>
         <div className="campus-profile">
           <div className="campus-wrapper">
             <img id="campus-pic" src={campus.imageUrl}/>
@@ -34,6 +36,10 @@ return (
             <p className="campus-info">{campus.description}</p>
           </div>
         </div>
+        </NavLink>
+        <button
+        onClick={() => deleteCampus(campus.id) }
+        >Delete Campus</button>
       </div>
     )})}
     {this.renderNewCampus()}
@@ -100,6 +106,6 @@ const mapState = (state) => {
   }
 };
 
-const mapDispatch = { addCampus };
+const mapDispatch = { addCampus, deleteCampus };
 
 export default connect(mapState, mapDispatch)(AllCampuses)
