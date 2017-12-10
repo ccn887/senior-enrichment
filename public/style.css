@@ -21,7 +21,6 @@ header>nav{
   color: whitesmoke;
   font-size: 1rem;
   text-decoration: none;
-
   height: 1rem;
   }
 .nav-item {
@@ -33,7 +32,6 @@ header>nav{
   padding-top: 1rem;
   z-index: 1;
   height: 1rem;
-
 }
 ul{ list-style-type: none; }
 header {
@@ -84,8 +82,12 @@ header {
   display: flex;
   flex-direction: row;
   padding-top: 14rem;
-  flex: 0 0 50%;
+  flex-wrap: wrap;
 }
+#singlecampus{
+  padding-top: 14rem;
+}
+
 #students {
   display: flex;
   flex-direction: row;
@@ -93,10 +95,16 @@ header {
   padding-right: 2rem;
   padding-top: 14rem;
   justify-content: space-between;
-  flex: 0 0 33%;
+  flex-wrap: wrap;
   font-family: 'Josefin Sans', sans-serif;
   font-family: 'Cinzel', serif;
   text-decoration: none;
+}
+section#campus{
+  display: flex;
+  flex-direction: row;
+  padding-top: 14rem;
+  flex-wrap: wrap;
 }
 #campus>div{
   display: flex;
@@ -107,8 +115,20 @@ header {
   text-align: center;
   padding: 0;
 }
+#singlecampus .campus-profile {
+  text-align: center;
+  padding: 0;
+}
 
 #campus .campus-name{
+  align-self: center;
+  text-align: center;
+  color: black;
+  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+}
+#singlecampus .campus-name{
   align-self: center;
   text-align: center;
   color: black;
@@ -122,4 +142,27 @@ header {
    color: black;
    font-family: 'Josefin Sans', sans-serif;
    font-size: 1rem;
+}
+#campus-pic {
+  display: block;
+  margin: auto;
+}
+#singlecampus .campus-info {
+   color: black;
+   font-family: 'Josefin Sans', sans-serif;
+   font-size: 1rem;
+   left: 20rem;
+   right: 20rem;
+}
+button#submit{
+  background:none;
+  border:none;
+  font-size:1em;
+  color: rgb(139, 137, 137);
+}
+button#delete{
+  background:;
+  border:none;
+  font-size:1em;
+  color:rgb(156, 152, 152);
 }

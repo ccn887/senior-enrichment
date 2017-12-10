@@ -14,7 +14,7 @@ const CampusDetail = (props) => {
   const currentCamp = currentCampus[0]
 
   return (
-    <div className="campus-profile">
+    <section id= "singlecampus" className="campus-profile">
       <div className="campus-wrapper">
         <img id="campus-pic" src={currentCamp.imageUrl} />
         <h3 className="campus-name">{currentCamp.name}</h3>
@@ -22,8 +22,7 @@ const CampusDetail = (props) => {
       </div>
       <NavLink to={`/campuses/update/${currentCamp.id}`}>Update Campus Information</NavLink>
       <button
-        onClick={() => deleteCampus(currentCampus.id)}
-      >Delete Campus</button>
+      id="delete" type="delete" onClick={() => deleteCampus(currentCampus.id)}>Delete Campus</button>
       <ul>{
         studentsForCampus.map(student => {
           return (
@@ -37,7 +36,7 @@ const CampusDetail = (props) => {
         }
         )}
       </ul>
-    </div>
+    </section>
   );
 }
 

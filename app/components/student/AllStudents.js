@@ -43,8 +43,7 @@ class AllStudents extends React.Component {
                 </div>
                 </NavLink>
                 <button
-                onClick={() => deleteStudent(student.id) }
-                >Delete Student</button>
+                id="delete" type="delete" onClick={() => deleteStudent(student.id) }>Delete Student</button>
           </div>
         )
       })}

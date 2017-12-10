@@ -52,9 +52,7 @@ class UpdateStudent extends React.Component {
           className="form-like"
           placeholder={currentKid.campusId}
         />
-            <button type="submit" className="btn btn-warning btn-xs">Submit Changes
-              <span className="glyphicon glyphicon-plus" />
-            </button>
+            <button type="submit" id="submit">Submit Changes</button>
           </form>
         </div>
       </div>

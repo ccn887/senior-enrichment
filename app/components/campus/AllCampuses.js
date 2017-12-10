@@ -35,9 +35,7 @@ class AllCampuses extends React.Component {
                   </div>
                 </div>
               </NavLink>
-              <button
-                onClick={() => deleteCampus(campus.id)}
-              >Delete Campus</button>
+              <button id="delete" type="delete" onClick={() => deleteCampus(campus.id)}>Delete Campus</button>
             </div>
           );
         })}

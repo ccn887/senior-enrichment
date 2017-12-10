@@ -20,7 +20,7 @@ class UpdateCampus extends React.Component {
     const currentCampus = campuses.filter(campus => campus.id === campusId);
     const currentCamp = currentCampus[0]
     return (
-      <div id="campus">
+      <section id="campus">
         <div className="campus-profile">
           <div className="campus-wrapper">
             <form onSubmit={this.submit}>
@@ -42,9 +42,7 @@ class UpdateCampus extends React.Component {
                 className="form-like"
                 placeholder={currentCamp.description}
               />
-              <button type="submit" className="btn btn-warning btn-xs">Submit Changes
-                <span className="glyphicon glyphicon-plus" />
-              </button>
+              <button type="submit" id="submit" >Submit Changes</button>
             </form>
           </div>
 
@@ -64,7 +62,7 @@ class UpdateCampus extends React.Component {
           <NavLink to={`/students`}>Add Student to Campus
           </NavLink>
         </div>
-      </div>
+      </section>
     )
   }
   submit(event) {
