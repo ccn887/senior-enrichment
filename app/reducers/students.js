@@ -54,30 +54,27 @@ export default function reducer(students = [], action) {
 }
 //Dispatchers
 export const getStudents = () => dispatch => {
-  console.log("trying to get students in axios")
   axios.get('/api/students')
     .then(res => dispatch(getStudentsCreator(res.data)))
-    .catch(err => console.error(`Could not find students:`, err))
+    .catch(err => console.error(`Could not find students:`, err));
 };
 
 
 export const addStudent = (student) => dispatch => {
   axios.post('/api/students', student)
     .then(res => dispatch(addStudentCreator(res.data)))
-    .catch(err => console.error(`Could not post student:`, err))
+    .catch(err => console.error(`Could not post student:`, err));
 }
 
 
 export const updateStudent = (id, student) => dispatch => {
-  console.log('update ran')
-  axios.put(`/api/update/students/${id}`, student)
+  axios.put(`/api/students/update/${id}`, student)
     .then(res => dispatch(updateStudentCreator(res.data)))
-    .catch(err => console.error(`Could not update student:`, err))
+    .catch(err => console.error(`Could not update student:`, err));
 }
 export const deleteStudent = (id) => dispatch => {
-  console.log('deleting student # :', id)
-  dispatch(deleteStudentCreator(id))
+  dispatch(deleteStudentCreator(id));
   axios.delete(`/api/students/${id}`)
     .then(res => dispatch(updateStudentCreator(res.data)))
-    .catch(err => console.error(`Removing user: ${id} unsuccessful`, err))
+    .catch(err => console.error(`Removing user: ${id} unsuccessful`, err));
 }

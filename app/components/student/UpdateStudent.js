@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateCampus, deleteCampus } from '../../reducers/campuses';
+import { updateStudent, deleteStudent } from '../../reducers/students';
 import { NavLink, withRouter } from 'react-router-dom';
 
 /* -----------------    COMPONENT     ------------------ */
@@ -13,14 +13,12 @@ class UpdateStudent extends React.Component {
   }
 
   render() {
-
-    const { students, campuses } = this.props;
     const studentId = +this.props.match.params.studentId
-    const currentStudent = students.filter(student => student.id === studentId);
+    const currentStudent = this.props.students.filter(student => student.id === studentId);
     const currentKid = currentStudent[0]
-    console.log('studentId:', studentId)
+
     return (
-      <div id="student">
+      <section id="students">
       <div className="student-profile">
         <div className="student-wrapper">
           <form onSubmit={this.submit}>
@@ -28,69 +26,65 @@ class UpdateStudent extends React.Component {
               name="firstname"
               type="text"
               className="student-name"
-              placeholder="new first name"
+              placeholder={currentKid.firstName}
             />
             <input
             name="lastname"
             type="text"
             className="student-name"
-            placeholder="new last name"
+            placeholder={currentKid.lastName}
           />
             <input
               name="email"
               type="text"
               className="form-like"
-              placeholder="new email"
+              placeholder={currentKid.email}
             />
             <input
             name="GPA"
             type="text"
             className="form-like"
-            placeholder="Updated GPA"
+            placeholder={currentKid.gpa}
           />
           <input
           name="campusId"
           type="text"
           className="form-like"
-          placeholder="New Campus I.D."
+          placeholder={currentKid.campusId}
         />
-            <button type="submit" className="btn btn-warning btn-xs">
+            <button type="submit" className="btn btn-warning btn-xs">Submit Changes
               <span className="glyphicon glyphicon-plus" />
             </button>
           </form>
         </div>
       </div>
-      </div>
-    )
+      </section>
+    );
   }
   submit(event) {
-    const { students, campuses } = this.props;
+    const { students } = this.props;
     const studentId = +this.props.match.params.studentId
     const currentStudent = students.filter(student => student.id === studentId);
     const currentKid = currentStudent[0]
 
     event.preventDefault();
-   const firstnameUp = (event.target.name.value ? event.target.firstname.value : currentKid.firstname);
-   const lastnameUp = (event.target.name.value ? event.target.lastname.value : currentKid.firstname);
+   const firstnameUp = (event.target.firstname.value ? event.target.firstname.value : currentKid.firstName);
+   const lastnameUp = (event.target.lastname.value ? event.target.lastname.value : currentKid.lastName);
    const emailUp = (event.target.email.value ? event.target.email.value : currentKid.email);
-   const GPAUp = (event.target.GPA.value ? +event.target.GPA.value : currentKid.gpa);
-   const campusUp = (event.target.campus.value ?event.target.campusId.value : currentKid.campusId);
+   const GPAUp = (event.target.GPA.value ? event.target.GPA.value : currentKid.gpa);
+   const campusUp = (event.target.campusId.value ? event.target.campusId.value : currentKid.campusId);
     const updatedstudent = {
       firstName: firstnameUp,
       lastName: lastnameUp,
       email: emailUp,
       gpa: GPAUp,
-      campusId: campusUp
+      campusId: null
     }
     console.log('updated:', updatedstudent)
     this.props.updateStudent(studentId, updatedstudent)
   }
 
 }
-
-
-
-
 
 /* -----------------    CONTAINER     ------------------ */
 
@@ -101,6 +95,6 @@ const mapState = (state) => {
   }
 };
 
-const mapDispatch = { updateCampus }
+const mapDispatch = { updateStudent }
 
 export default withRouter(connect(mapState, mapDispatch)(UpdateStudent));

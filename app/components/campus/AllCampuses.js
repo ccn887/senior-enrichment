@@ -6,103 +6,102 @@ import { NavLink, withRouter } from 'react-router-dom';
 
 
 class AllCampuses extends React.Component {
-  constructor(props){
-  super(props)
+  constructor(props) {
+    super(props)
 
-  this.state = {
-    name: '',
-    imgUrl: '',
-    description: ''
+    this.state = {
+      name: '',
+      imgUrl: '',
+      description: ''
+    }
+    this.submit = this.submit.bind(this)
   }
-  this.submit = this.submit.bind(this)
-}
-render(){
-  const newCampus = this.state
-  const campuses = this.props.campuses
-  console.log("campuses:", campuses)
-  const deleteCampus = this.props.deleteCampus
+  render() {
+    const newCampus = this.state
+    const campuses = this.props.campuses
+    const deleteCampus = this.props.deleteCampus
 
-return (
-    <section id="campus">
-    { campuses.map(campus =>{
-      console.log("url:", campus.imageUrl)
-    return(
-      <div key={campus.id}>>
+    return (
+      <section id="campus">
+        {campuses.map(campus => {
+          return (
+            <div key={campus.id}>
       <NavLink to={`/campuses/${campus.id}`}>
-        <div className="campus-profile">
-          <div className="campus-wrapper">
-            <img id="campus-pic" src={campus.imageUrl}/>
-            <h3 className="campus-name">{campus.name}</h3>
-            <p className="campus-info">{campus.description}</p>
-          </div>
-        </div>
-        </NavLink>
-        <button
-        onClick={() => deleteCampus(campus.id) }
-        >Delete Campus</button>
-      </div>
-    )})}
-    {this.renderNewCampus()}
-     </section>
-)}
-renderNewCampus() {
-  return (
-    <div >
-      <form  onSubmit={this.submit}>
-        <div >
-          <h4 >
-            <input
-              name="name"
-              type="text"
-              required
-              placeholder="Campus Name"
-              className="form-like"
-            />
-          </h4>
-          <h5 className="tucked">
-            <input
-              name="description"
-              type="description"
-              placeholder="Campus Description"
-              className="form-like"
-            />
-          </h5>
-          <h5 className="tucked">
-            <input
-              name="imgUrl"
-              type="imgUrl"
-              placeholder="Image URL here"
-              className="form-like"
-            />
-          </h5>
+                <div className="campus-profile">
+                  <div className="campus-wrapper">
+                    <img id="campus-pic" src={campus.imageUrl} />
+                    <h3 className="campus-name">{campus.name}</h3>
+                    <p className="campus-info">{campus.description}</p>
+                  </div>
+                </div>
+              </NavLink>
+              <button
+                onClick={() => deleteCampus(campus.id)}
+              >Delete Campus</button>
+            </div>
+          );
+        })}
+        {this.renderNewCampus()}
+      </section>
+    )
+  }
+  renderNewCampus() {
+    return (
+      <div >
+        <form onSubmit={this.submit}>
           <div >
-          <button
-            type="submit">Add Campus</button>
-        </div>
-        </div>
-      </form>
-    </div>
-  );
-}
-submit(event) {
-  event.preventDefault();
-  const campus = {
-    name: event.target.name.value,
-    imgUrl: event.target.imgUrl.value,
-    description: event.target.description.value,
+            <h4 >
+              <input
+                name="name"
+                type="text"
+                required
+                placeholder="Campus Name"
+                className="form-like"
+              />
+            </h4>
+            <h5 className="tucked">
+              <input
+                name="description"
+                type="description"
+                placeholder="Campus Description"
+                className="form-like"
+              />
+            </h5>
+            <h5 className="tucked">
+              <input
+                name="imgUrl"
+                type="imgUrl"
+                placeholder="Image URL here"
+                className="form-like"
+              />
+            </h5>
+            <div >
+              <button
+                type="submit">Add Campus</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    );
+  }
+  submit(event) {
+    event.preventDefault();
+    const campus = {
+      name: event.target.name.value,
+      imgUrl: event.target.imgUrl.value,
+      description: event.target.description.value,
 
-  };
-  this.props.addCampus(campus);
-  // clear the inputs
-  event.target.name.value = '';
-  event.target.description.value = '';
-  event.target.imgUrl.value = '';
-}
+    };
+    this.props.addCampus(campus);
+    event.target.name.value = '';
+    event.target.description.value = '';
+    event.target.imgUrl.value = '';
+  }
 }
 
 const mapState = (state) => {
-  return{
-  campuses: state.campuses
+  return {
+    campuses: state.campuses
   }
 };
 

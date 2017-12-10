@@ -4,10 +4,9 @@ const Campus = require('../../db/models/campus')
 const Student = require('../../db/models/student')
 
 campusRouter.get('/', (req, res) => {
-  console.log("trying to get campuses")
   Campus.findAll({ include: [{ model: Student, as: 'Students' }] })
-  .then(campuses => res.json(campuses))
-  .catch(err => res.send(err))
+    .then(campuses => res.json(campuses))
+    .catch(err => res.send(err))
 });
 
 campusRouter.get('/:id', (req, res) => {
@@ -16,48 +15,47 @@ campusRouter.get('/:id', (req, res) => {
       id: +req.params.id
     }
   })
-  .then(campus => res.json(campus))
-  .catch(err => res.send(err))
+    .then(campus => res.json(campus))
+    .catch(err => res.send(err))
 })
 
 campusRouter.post('/new-campus', (req, res) => {
-  console.log('got to server side!')
   Campus.create({
     name: req.body.name,
     imageUrl: req.body.imageUrl,
     description: req.body.description
   })
-  .then(campus => res.json(campus))
-  .catch(err => res.send(err))
+    .then(campus => res.json(campus))
+    .catch(err => res.send(err))
 })
 
 campusRouter.put('/update/:id', (req, res) => {
- Campus.findOne({
+  Campus.findOne({
     where: {
       id: +req.params.id
     }
   })
-  .then(campus =>{
-    campus.update({
-      name: req.body.name,
-      imageUrl: req.body.imageUrl,
-      description: req.body.description
+    .then(campus => {
+      campus.update({
+        name: req.body.name,
+        imageUrl: req.body.imageUrl,
+        description: req.body.description
+      })
     })
-  })
-  .then(result => res.json(result))
-  .catch(err => res.send(err))
+    .then(result => res.json(result))
+    .catch(err => res.send(err))
 })
 campusRouter.delete('/:id', (req, res) => {
   Campus.findOne({
-     where: {
-       id: +req.params.id
-     }
-   })
-   .then(campus => {
-     return campus.destroy({force: true})
-     })
-   .then((result)=> res.json('this record no longer exists'))
-   .catch(err => res.send(err))
- })
+    where: {
+      id: +req.params.id
+    }
+  })
+    .then(campus => {
+      return campus.destroy({ force: true })
+    })
+    .then((result) => res.json('this record no longer exists'))
+    .catch(err => res.send(err))
+})
 
 module.exports = campusRouter

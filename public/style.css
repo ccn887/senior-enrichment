@@ -23,6 +23,8 @@ header>nav{
   justify-content: space-around;
   padding: 1rem;
   padding-top: 2rem;
+  z-index: 1;
+
 }
 header {
   display: flex;

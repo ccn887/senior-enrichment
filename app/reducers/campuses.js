@@ -54,14 +54,12 @@ export default function reducer(campuses = [], action) {
 }
 //Dispatchers
 export const getCampuses = () => dispatch => {
-  console.log("trying to get campuses in axios")
   axios.get('/api/campuses')
     .then(res => dispatch(getCampusesCreator(res.data)))
     .catch(err => console.error(`Could not find campuses:`, err))
 };
 
-export const addCampus = (campus, history) => dispatch => {
-  console.log('history:', history)
+export const addCampus = (campus) => dispatch => {
   axios.post('/api/campuses/new-campus', campus)
     .then(res => dispatch(addCampusCreator(res.data)))
     .catch(err => console.error(`Could not post campus:`, err))
@@ -69,13 +67,12 @@ export const addCampus = (campus, history) => dispatch => {
 
 
 export const updateCampus = (id, campus) => dispatch => {
-  console.log('update ran')
   axios.put(`/api/campuses/update/${id}`, campus)
     .then(res => dispatch(updateCampusCreator(res.data)))
     .catch(err => console.error(`Could not update campus:`, err))
 }
 export const deleteCampus = (id) => dispatch => {
-  dispatch(deleteCampusCreator(id))
-  axios.delete(`/api/campuses/${id}`, campus)
+  dispatch(deleteCampusCreator(id));
+  axios.delete(`/api/campuses/${id}`)
     .then(res => dispatch(updateCampusCreator(res.data)))
     .catch(err => console.error(`Removing user: ${id} unsuccessful`, err))}

@@ -6,8 +6,8 @@ const Campus = require('../../db/models/campus')
 
 studentRouter.get('/', (req, res) => {
   Student.findAll()
-  .then(students => res.json(students))
-  .catch(err => res.send(err))
+    .then(students => res.json(students))
+    .catch(err => res.send(err))
 })
 
 studentRouter.get('/:id', (req, res) => {
@@ -17,8 +17,8 @@ studentRouter.get('/:id', (req, res) => {
       id: +req.params.id
     }
   })
-  .then(student => res.json(student))
-  .catch(err => res.send(err))
+    .then(student => res.json(student))
+    .catch(err => res.send(err))
 })
 
 studentRouter.post('/', (req, res) => {
@@ -29,39 +29,39 @@ studentRouter.post('/', (req, res) => {
     gpa: +req.body.gpa,
     campusId: +req.body.campusId
   })
-  .then(student => res.json(student))
-  .catch(err => res.send(err))
+    .then(student => res.json(student))
+    .catch(err => res.send(err))
 })
 
 studentRouter.put('/update/:id', (req, res) => {
   Student.findOne({
-     where: {
-       id: +req.params.id
-     }
-   })
-   .then(student => {
-     student.update({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email,
-      gpa: +req.body.gpa
-     })
-   })
-   .then(result => res.json(result))
-   .catch(err => res.send(err))
- })
+    where: {
+      id: +req.params.id
+    }
+  })
+    .then(student => {
+      student.update({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        gpa: +req.body.gpa
+      })
+    })
+    .then(result => res.json(result))
+    .catch(err => res.send(err))
+})
 
- studentRouter.delete('/:id', (req, res) => {
+studentRouter.delete('/:id', (req, res) => {
   Student.findOne({
-     where: {
-       id: +req.params.id
-     }
-   })
-   .then(student => {
-     return student.destroy({force: true})
-     })
-   .then((result)=> res.json('this record no longer exists'))
-   .catch(err => res.send(err))
- })
+    where: {
+      id: +req.params.id
+    }
+  })
+    .then(student => {
+      return student.destroy({ force: true })
+    })
+    .then((result) => res.json('this record no longer exists'))
+    .catch(err => res.send(err))
+})
 
 module.exports = studentRouter;

@@ -24,7 +24,6 @@ export default class Routes extends Component {
     }
 
   render(){
-    console.log('route rendered!', this.state)
   return(
     <div>
     <Header />
