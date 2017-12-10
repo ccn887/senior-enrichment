@@ -23,7 +23,7 @@ class AllStudents extends React.Component {
     const newStudent = this.state
     const students = this.props.students
     console.log('students:', students)
-    const campuses = (student) => this.props.campuses.filter(campus => campus.id === student.campusId)
+    const campus = (student) => this.props.campuses.filter(campus => campus.id === student.campusId)
     const deleteStudent = this.props.deleteStudent
 
     return (
@@ -40,7 +40,7 @@ class AllStudents extends React.Component {
                 <h3 className="student-name">{student.firstName + ' ' + student.lastName}</h3>
                 <h4 className="student-info"> Email Address: {student.email}</h4>
                 <h4 className="student-info"> Current GPA: {student.gpa}</h4>
-                <h4 className="student-info"> Attending: {campuses(student)[0].name}</h4>
+                <h4 className="student-info"> Attending: {campus(student)[0].name}</h4>
                 </div>
                 </div>
                 </NavLink>

@@ -68,8 +68,9 @@ export const addCampus = (campus, history) => dispatch => {
 }
 
 
-export const updateCampus = (campus) => dispatch => {
-  axios.put(`/api/campuses/update/${campus.id}`, campus)
+export const updateCampus = (id, campus) => dispatch => {
+  console.log('update ran')
+  axios.put(`/api/campuses/update/${id}`, campus)
     .then(res => dispatch(updateCampusCreator(res.data)))
     .catch(err => console.error(`Could not update campus:`, err))
 }

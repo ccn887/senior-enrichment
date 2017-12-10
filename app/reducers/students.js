@@ -4,7 +4,6 @@ import axios from 'axios';
 // ACTION TYPES
 
 const GET_STUDENTS = 'GET_STUDENTS';
-const GET_STUDENT = 'GET_STUDENT';
 const UPDATE_STUDENT = 'UPDATE_STUDENT';
 const ADD_STUDENT = 'ADD_STUDENT ';
 const DELETE_STUDENT = 'DELETE_STUDENT';
@@ -17,10 +16,6 @@ export function getStudentsCreator(students) {
   return action;
 }
 
-export function getStudentCreator(student) {
-  const action = { type: GET_STUDENT, student };
-  return action;
-}
 export function addStudentCreator(student) {
   const action = { type: ADD_STUDENT, student };
   return action;
@@ -42,8 +37,6 @@ export default function reducer(students = [], action) {
 
     case GET_STUDENTS:
       return action.students;
-    case GET_STUDENT:
-      return action.student;
 
     case ADD_STUDENT:
       return [...students, action.student];
@@ -67,12 +60,6 @@ export const getStudents = () => dispatch => {
     .catch(err => console.error(`Could not find students:`, err))
 };
 
-export const getStudent = () => dispatch => {
-  console.log("trying to get student in axios")
-  axios.get(`/api/students/${student.id}`)
-    .then(res => dispatch(getStudentCreator(res.data)))
-    .catch(err => console.error(`Could not find students:`, err))
-};
 
 export const addStudent = (student) => dispatch => {
   axios.post('/api/students', student)
@@ -81,8 +68,9 @@ export const addStudent = (student) => dispatch => {
 }
 
 
-export const updateStudent = (student) => dispatch => {
-  axios.put(`/api/students/${student.id}`, student)
+export const updateStudent = (id, student) => dispatch => {
+  console.log('update ran')
+  axios.put(`/api/update/students/${id}`, student)
     .then(res => dispatch(updateStudentCreator(res.data)))
     .catch(err => console.error(`Could not update student:`, err))
 }

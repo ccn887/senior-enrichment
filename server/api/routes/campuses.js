@@ -24,7 +24,7 @@ campusRouter.post('/new-campus', (req, res) => {
   console.log('got to server side!')
   Campus.create({
     name: req.body.name,
-    imgUrl: req.body.imgUrl,
+    imageUrl: req.body.imageUrl,
     description: req.body.description
   })
   .then(campus => res.json(campus))
@@ -40,7 +40,7 @@ campusRouter.put('/update/:id', (req, res) => {
   .then(campus =>{
     campus.update({
       name: req.body.name,
-      imgUrl: req.body.imgUrl,
+      imageUrl: req.body.imageUrl,
       description: req.body.description
     })
   })

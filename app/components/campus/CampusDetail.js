@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateCampus, deleteCampus } from '../../reducers/campuses';
+import { deleteCampus } from '../../reducers/campuses';
 import { NavLink, withRouter } from 'react-router-dom';
 
 /* -----------------    COMPONENT     ------------------ */
@@ -10,15 +10,8 @@ class CampusDetail extends React.Component {
     super(props);
   }
 
-  componentWillReceiveProps (newProps, oldProps) {
-    this.setState({
-      campus: newProps.campus
-    });
-  }
-
 
   render() {
-    console.log('trying to render')
     const {students, campuses} = this.props;
     const campusId = Number(this.props.match.params.campusId)
     const studentsForCampus = students.filter(student => student.campusId === campusId);
@@ -66,6 +59,6 @@ const mapState = (state) => {
   }
 };
 
-const mapDispatch = {deleteCampus, updateCampus}
+const mapDispatch = {deleteCampus}
 
 export default withRouter(connect(mapState, mapDispatch)(CampusDetail));

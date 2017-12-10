@@ -7,6 +7,7 @@ import AllStudents from './components/student/AllStudents';
 import AllCampuses from './components/campus/AllCampuses';
 import CampusDetail from './components/campus/CampusDetail';
 import UpdateCampus from './components/campus/UpdateCampus';
+import UpdateStudent from './components/Student/UpdateStudent';
 import StudentDetail from './components/student/StudentDetail';
 import store from './store'
 import {getCampuses} from './reducers/campuses'
@@ -23,7 +24,7 @@ export default class Routes extends Component {
     }
 
   render(){
-    console.log('route rendered!')
+    console.log('route rendered!', this.state)
   return(
     <div>
     <Header />
@@ -31,9 +32,11 @@ export default class Routes extends Component {
     <Route exact path="/" component={Home}  />
     <Route exact path="/campuses" component={AllCampuses} />
     <Route exact path="/students" component={AllStudents} />
-    <Route  exact path="/students/:id" component={StudentDetail} />
-     <Route path="/campuses/:campusId" component={CampusDetail} />
+    <Route  exact path="/students/:studentId" component={StudentDetail} />
+     <Route exact path="/campuses/:campusId" component={CampusDetail} />
      <Route path="/campuses/update/:campusId" component={UpdateCampus} />
+     <Route path="/students/update/:studentId" component={UpdateStudent} />
+
     </Switch>
     </div>
 )

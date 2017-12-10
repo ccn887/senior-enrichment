@@ -33,7 +33,7 @@ studentRouter.post('/', (req, res) => {
   .catch(err => res.send(err))
 })
 
-studentRouter.put('/:id', (req, res) => {
+studentRouter.put('/update/:id', (req, res) => {
   Student.findOne({
      where: {
        id: +req.params.id
