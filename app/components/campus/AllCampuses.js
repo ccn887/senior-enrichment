@@ -25,9 +25,9 @@ class AllCampuses extends React.Component {
       <section id="campus">
         {campuses.map(campus => {
           return (
-            <div key={campus.id}>
-      <NavLink to={`/campuses/${campus.id}`}>
-                <div className="campus-profile">
+            <div key={campus.id} className="campus-profile">
+      <NavLink to={`/campuses/${campus.id}`} style={{ textDecoration: 'none' }}>
+                <div >
                   <div className="campus-wrapper">
                     <img id="campus-pic" src={campus.imageUrl} />
                     <h3 className="campus-name">{campus.name}</h3>

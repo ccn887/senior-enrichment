@@ -14,9 +14,11 @@ class UpdateCampus extends React.Component {
 
   render() {
 
-    const { students } = this.props;
+    const { students, campuses } = this.props;
     const campusId = +this.props.match.params.campusId;
     const studentsForCampus = students.filter(student => student.campusId === campusId);
+    const currentCampus = campuses.filter(campus => campus.id === campusId);
+    const currentCamp = currentCampus[0]
     return (
       <div id="campus">
         <div className="campus-profile">
@@ -26,19 +28,19 @@ class UpdateCampus extends React.Component {
                 name="name"
                 type="text"
                 className="campus-name"
-                placeholder="new name"
+                placeholder={currentCamp.name}
               />
               <input
                 name="image"
                 type="text"
                 className="form-like"
-                placeholder="new image url"
+                placeholder={currentCamp.imageUrl}
               />
               <input
                 name="description"
                 type="text"
                 className="form-like"
-                placeholder="new description"
+                placeholder={currentCamp.description}
               />
               <button type="submit" className="btn btn-warning btn-xs">Submit Changes
                 <span className="glyphicon glyphicon-plus" />

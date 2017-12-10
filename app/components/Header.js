@@ -12,15 +12,8 @@ const Header = (props) => {
           alt=" photo 500px-UK_Royal_Coat_of_Armssvg.png" />
       </div>
       <nav>
-        <NavLink to={`/`}>
-          <div className="nav-item">
-            Homelinked
-        </div>
-        </NavLink>
-        <NavLink to={`/students`}>
-          <div className="nav-item"> Studentslinked
-          </div>
-        </NavLink>
+        <NavLink to={`/`} className="nav-item"> Home</NavLink>
+        <NavLink to={`/students`} className="nav-item">Students</NavLink>
       </nav>
       <div id="app" className="home">
         <div id="title">Margaret Hamilton Interplanetary Academy of JavaScript

@@ -31,7 +31,7 @@ class AllStudents extends React.Component {
       {students.map(student => {
         return (
           <div key={student.id}>
-          <NavLink to={`/students/${student.id}`}>
+          <NavLink to={`/students/${student.id}`} style={{ textDecoration: 'none' }}>
             <div className="student-profile">
               <div className="student-wrapper">
                 <img id="student-pic" src={student.imageUrl} />
