@@ -64,6 +64,14 @@ header {
   padding: 1rem;
   padding-top: 1rem;
 }
+.nav-style-student{
+  font-size:1em;
+  color: rgb(139, 137, 137);
+  text-align: center;
+  padding-left: 10rem;
+  text-decoration: none;
+  font-family: 'Josefin Sans', sans-serif;
+}
 .nav-style-dark{
   text-decoration: none;
   color: black;
@@ -133,6 +141,7 @@ section#campus{
   padding-top: 14rem;
   flex-wrap: wrap;
 }
+
 #campus>div{
   display: flex;
   flex-wrap: wrap;
@@ -188,6 +197,16 @@ button#submit{
   text-align: center;
   margin-left: 0;
   right: 0;
+}
+.enrolled-students{
+  font-size:1em;
+  color: rgb(139, 137, 137);
+  text-align: center;
+  margin-left: 0;
+  right: 0;
+  text-decoration: none;
+  font-family: 'Josefin Sans', sans-serif;
+
 }
 
 button#delete{

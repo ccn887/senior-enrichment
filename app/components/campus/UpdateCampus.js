@@ -43,13 +43,12 @@ class UpdateCampus extends React.Component {
               />
               <button type="submit" id="submit" >Submit Changes</button>
             </form>
-          </div>
-
+            </div>
           <ul>{
             studentsForCampus.map(student => {
               return (
                 <div key={student.id}>
-                  <NavLink className="nav-style" to={`/students/${student.id}`}>
+                  <NavLink className="enrolled-students" to={`/students/${student.id}`}>
                     <li> {student.id + '. ' + student.firstName + ' ' + student.lastName}
                     </li>
                   </NavLink>
@@ -58,7 +57,8 @@ class UpdateCampus extends React.Component {
             }
             )}
           </ul>
-          <NavLink className="nav-style" to={`/students`}>Add Student to Campus
+          <div className="enrolled-students">Enrolled Students</div>
+          <NavLink className="nav-style-student" to={`/students`}>Add Student to Campus
           </NavLink>
       </section>
     )
