@@ -20,14 +20,14 @@ const CampusDetail = (props) => {
         <h3 className="campus-name">{currentCamp.name}</h3>
         <p className="campus-info">{currentCamp.description}</p>
       </div>
-      <NavLink to={`/campuses/update/${currentCamp.id}`}>Update Campus Information</NavLink>
+      <NavLink className="nav-style" to={`/campuses/update/${currentCamp.id}`}>Update Campus Information</NavLink>
       <button
       id="delete" type="delete" onClick={() => deleteCampus(currentCampus.id)}>Delete Campus</button>
       <ul>{
         studentsForCampus.map(student => {
           return (
             <div key={student.id}>
-              <NavLink to={`/students/${student.id}`}>
+              <NavLink className="nav-style-dark" to={`/students/${student.id}`}>
                 <li> {(studentsForCampus.indexOf(student) + 1) + '. ' + student.firstName + ' ' + student.lastName}
                 </li>
               </NavLink>

@@ -12,8 +12,9 @@ class AllCampuses extends React.Component {
     this.state = {
       name: '',
       imgUrl: '',
-      description: ''
-    }
+      description: '',
+      showForm: false
+    };
     this.submit = this.submit.bind(this)
   }
   render() {
@@ -39,10 +40,16 @@ class AllCampuses extends React.Component {
             </div>
           );
         })}
-        {this.renderNewCampus()}
+        <button className="campus-wrapper" id="submit" onClick={() => this.hideFunction()}>Add New Campus</button>
+        {this.state.showForm ? this.renderNewCampus() : null}
       </section>
     )
   }
+  hideFunction() {
+    this.state.showForm ?
+    this.setState({ showForm: false }) : this.setState({ showForm: true })
+    console.log(this.state.showForm)
+}
   renderNewCampus() {
     return (
       <section id="campus" >
@@ -75,13 +82,14 @@ class AllCampuses extends React.Component {
             </h2>
             <div >
               <button
-                type="submit">Add Campus</button>
+                type="submit">Submit</button>
             </div>
           </div>
         </form>
         </section>
     );
   }
+
   submit(event) {
     event.preventDefault();
     const campus = {

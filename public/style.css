@@ -37,11 +37,12 @@ ul{ list-style-type: none; }
 header {
   display: flex;
   background-color: rgb(197, 225, 233);
+  margin-top: 0;
   width: 100%;
   height: 8rem;
   position: fixed;
   z-index: 0;
-  opacity: .5;
+  opacity: .7;
 }
 .nav-item {
   text-decoration: none;
@@ -55,13 +56,29 @@ header {
   justify-content: flex-end;
 
 }
+.nav-style{
+  text-decoration: none;
+  color: rgb(156, 152, 152);
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1rem;
+  padding: 1rem;
+  padding-top: 1rem;
+}
+.nav-style-dark{
+  text-decoration: none;
+  color: black;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1rem;
+  padding: 1rem;
+  padding-top: 1rem;
+}
 .logo > img {
   display: flex;
   height: 8rem;
   opacity: 1;
   justify-content: flex-start;
 }
-#title {
+div#title {
   font-family: 'Josefin Sans', sans-serif;
   font-family: 'Cinzel', serif;
   font-size: 1.75rem;
@@ -86,6 +103,16 @@ header {
 }
 #singlecampus{
   padding-top: 14rem;
+}
+
+#singlestudent{
+  padding-top: 14rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  text-align: center;
+  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Cinzel', serif;
+  text-decoration: none;
 }
 
 #students {
@@ -115,9 +142,10 @@ section#campus{
   text-align: center;
   padding: 0;
 }
-#singlecampus .campus-profile {
+section#singlecampus.campus-profile {
   text-align: center;
-  padding: 0;
+  padding-left: 20rem;
+  padding-right: 20rem;
 }
 
 #campus .campus-name{
@@ -136,7 +164,7 @@ section#campus{
   font-family: 'Cinzel', serif;
   font-size: 1.5rem;
 }
-#campus .campus-info {
+ .campus-info {
   flex-direction: row;
    flex-wrap: wrap;
    color: black;
@@ -151,15 +179,17 @@ section#campus{
    color: black;
    font-family: 'Josefin Sans', sans-serif;
    font-size: 1rem;
-   left: 20rem;
-   right: 20rem;
 }
 button#submit{
   background:none;
   border:none;
   font-size:1em;
   color: rgb(139, 137, 137);
+  text-align: center;
+  margin-left: 0;
+  right: 0;
 }
+
 button#delete{
   background:;
   border:none;

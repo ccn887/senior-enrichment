@@ -14,16 +14,16 @@ const StudentDetail = (props) => {
   const currentKid = currentStudent[0]
 
   return (
-    <div id="students" className="student-profile">
+    <div id="singlestudent" className="student-profile">
       <div className="student-wrapper">
-        <h3 className="student-name">{currentKid.firstName + ' ' + currentKid.lastName}</h3>
+        <h4 className="student-name">{currentKid.firstName + ' ' + currentKid.lastName}</h4>
         <h4 className="student-info"> Email Address: {currentKid.email}</h4>
         <h4 className="student-info"> Current GPA: {currentKid.gpa}</h4>
-        <NavLink to={`/campuses/${campus(currentKid)[0].id}`}>
+        <NavLink className="nav-style" to={`/campuses/${campus(currentKid)[0].id}`}>
           <h4 className="student-info"> Attending: {campus(currentKid)[0].name}</h4>
         </NavLink>
       </div>
-      <NavLink to={`/students/update/${currentKid.id}`}>Update Student Information</NavLink>
+      <NavLink className="nav-style" to={`/students/update/${currentKid.id}`}>Update Student Information</NavLink>
       <button
       type="delete" id="delete" onClick={() => deleteStudent(currentStudent.id)}
       >Delete Student Record</button>

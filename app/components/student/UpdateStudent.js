@@ -25,13 +25,13 @@ class UpdateStudent extends React.Component {
             <input
               name="firstname"
               type="text"
-              className="student-name"
+              className="form-like"
               placeholder={currentKid.firstName}
             />
             <input
             name="lastname"
             type="text"
-            className="student-name"
+            className="form-like"
             placeholder={currentKid.lastName}
           />
             <input
@@ -44,13 +44,13 @@ class UpdateStudent extends React.Component {
             name="GPA"
             type="text"
             className="form-like"
-            placeholder={currentKid.gpa}
+            placeholder={`current GPA: ${currentKid.gpa}`}
           />
           <input
           name="campusId"
           type="text"
           className="form-like"
-          placeholder={currentKid.campusId}
+          placeholder={`current Campus: ${currentKid.campusId}`}
         />
             <button type="submit" id="submit">Submit Changes</button>
           </form>

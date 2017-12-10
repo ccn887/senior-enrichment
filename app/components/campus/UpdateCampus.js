@@ -22,25 +22,24 @@ class UpdateCampus extends React.Component {
     return (
       <section id="campus">
         <div className="campus-profile">
-          <div className="campus-wrapper">
             <form onSubmit={this.submit}>
               <input
                 name="name"
                 type="text"
-                className="campus-name"
+                className="form-like"
                 placeholder={currentCamp.name}
               />
               <input
                 name="image"
                 type="text"
                 className="form-like"
-                placeholder={currentCamp.imageUrl}
+                placeholder="new image URL"
               />
               <input
                 name="description"
                 type="text"
                 className="form-like"
-                placeholder={currentCamp.description}
+                placeholder="new description"
               />
               <button type="submit" id="submit" >Submit Changes</button>
             </form>
@@ -50,7 +49,7 @@ class UpdateCampus extends React.Component {
             studentsForCampus.map(student => {
               return (
                 <div key={student.id}>
-                  <NavLink to={`/students/${student.id}`}>
+                  <NavLink className="nav-style" to={`/students/${student.id}`}>
                     <li> {student.id + '. ' + student.firstName + ' ' + student.lastName}
                     </li>
                   </NavLink>
@@ -59,9 +58,8 @@ class UpdateCampus extends React.Component {
             }
             )}
           </ul>
-          <NavLink to={`/students`}>Add Student to Campus
+          <NavLink className="nav-style" to={`/students`}>Add Student to Campus
           </NavLink>
-        </div>
       </section>
     )
   }

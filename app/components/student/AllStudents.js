@@ -50,7 +50,7 @@ class AllStudents extends React.Component {
                 <td className="student-name">{student.firstName + ' ' + student.lastName}</td>
                 <td className="student-info">{student.email} </td>
                 <td className="student-info">{'       ' + student.gpa + '       '}</td>
-                <td className="student-info"> {'    ' + campuses(student)[0].name + '    '}  </td>
+                <td className="student-info"> {campuses(student)[0].name}  </td>
                 <td><NavLink to={`/students/${student.id}`} style={{ textDecoration: 'none' }}>Update Record</NavLink></td>
                 <td>
                 <button
