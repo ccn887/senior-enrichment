@@ -12,4 +12,4 @@ module.exports = db.define('campus', {
     defaultValue: 'http://www.travelcaffeine.com/wp-content/uploads/2017/10/bradbury-building-blade-runner-los-angeles-california-318.jpg'
   },
   description: Sequelize.TEXT
-})
+});
