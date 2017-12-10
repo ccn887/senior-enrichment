@@ -28,7 +28,7 @@ const CampusDetail = (props) => {
           return (
             <div key={student.id}>
               <NavLink to={`/students/${student.id}`}>
-                <li> {student.id + '. ' + student.firstName + ' ' + student.lastName}
+                <li> {(studentsForCampus.indexOf(student) + 1) + '. ' + student.firstName + ' ' + student.lastName}
                 </li>
               </NavLink>
             </div>

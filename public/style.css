@@ -164,5 +164,13 @@ button#delete{
   background:;
   border:none;
   font-size:1em;
+  font-family: 'Josefin Sans', sans-serif;
+  color:rgb(156, 152, 152);
+}
+input.form-like{
+  background:;
+  font-size:1em;
+  font-family: 'Josefin Sans', sans-serif;
+
   color:rgb(156, 152, 152);
 }

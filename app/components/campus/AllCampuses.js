@@ -45,10 +45,10 @@ class AllCampuses extends React.Component {
   }
   renderNewCampus() {
     return (
-      <div >
+      <section id="campus" >
         <form onSubmit={this.submit}>
           <div >
-            <h4 >
+            <h2 >
               <input
                 name="name"
                 type="text"
@@ -56,30 +56,30 @@ class AllCampuses extends React.Component {
                 placeholder="Campus Name"
                 className="form-like"
               />
-            </h4>
-            <h5 className="tucked">
+            </h2>
+            <h2 >
               <input
                 name="description"
                 type="description"
                 placeholder="Campus Description"
                 className="form-like"
               />
-            </h5>
-            <h5 className="tucked">
+            </h2>
+            <h2 >
               <input
                 name="imgUrl"
                 type="imgUrl"
                 placeholder="Image URL here"
                 className="form-like"
               />
-            </h5>
+            </h2>
             <div >
               <button
                 type="submit">Add Campus</button>
             </div>
           </div>
         </form>
-      </div>
+        </section>
     );
   }
   submit(event) {
