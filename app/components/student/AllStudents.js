@@ -14,9 +14,11 @@ class AllStudents extends React.Component {
       lastName: '',
       email: '',
       gpa: null,
-      campusId: null
-    }
+      campusId: null,
+      showForm: false
+    };
     this.submit = this.submit.bind(this);
+    this.hideFunction = this.hideFunction.bind(this)
   }
 
   render() {
@@ -27,33 +29,51 @@ class AllStudents extends React.Component {
 
 
     return (
-      <section id="students">
+      <div>
+      <table className="table">
+      <thead>
+      <tr>
+      <th>Student I.D.</th>
+      <th>Name</th>
+      <th>{'Email Address  '}</th>
+      <th>{'  Current GPA  '}</th>
+      <th>{'  Campus  '}</th>
+      <th>{'  Update Student Record  '}</th>
+      <th>{'  Delete Student Record  '}</th>
+    </tr>
+    </thead>
+    <tbody>
       {students.map(student => {
         return (
-          <div key={student.id}>
-          <NavLink to={`/students/${student.id}`} style={{ textDecoration: 'none' }}>
-            <div className="student-profile">
-              <div className="student-wrapper">
-                <img id="student-pic" src={student.imageUrl} />
-                <h3 className="student-name">{student.firstName + ' ' + student.lastName}</h3>
-                <h4 className="student-info"> Email Address: {student.email}</h4>
-                <h4 className="student-info"> Current GPA: {student.gpa}</h4>
-                <h4 className="student-info"> Attending: {campuses(student)[0].name}</h4>
-                </div>
-                </div>
-                </NavLink>
+          <tr key={student.id}>
+          <td> {student.id} </td>
+                <td className="student-name">{student.firstName + ' ' + student.lastName}</td>
+                <td className="student-info">{student.email} </td>
+                <td className="student-info">{'       ' + student.gpa + '       '}</td>
+                <td className="student-info"> {'    ' + campuses(student)[0].name + '    '}  </td>
+                <td><NavLink to={`/students/${student.id}`} style={{ textDecoration: 'none' }}>Update Record</NavLink></td>
+                <td>
                 <button
-                id="delete" type="delete" onClick={() => deleteStudent(student.id) }>Delete Student</button>
-          </div>
+                id="delete" type="delete" onClick={() => deleteStudent(student.id) }>{'     Delete Student     '}</button>
+                </td>
+          </tr>
         )
       })}
-      {this.renderNewStudent()}
-      </section>
+      </tbody>
+      </table>
+      <button id="submit" onClick={() => this.hideFunction()}>Add New Student</button>
+      {this.state.showForm ? this.renderNewStudent() : null}
+      </div>
     )}
-
+    hideFunction() {
+      this.state.showForm ?
+      this.setState({ showForm: false }) : this.setState({ showForm: true })
+      console.log(this.state.showForm)
+  }
       renderNewStudent() {
+        console.log('invoked')
         return (
-          <div >
+          <div id="hidden-form">
         <form onSubmit={this.submit}>
           <div >
             <h4 >
@@ -100,7 +120,7 @@ class AllStudents extends React.Component {
           </h5>
             <div >
               <button
-                type="submit">Add New Student</button>
+                type="submit" id="submit" >Submit</button>
             </div>
           </div>
         </form>
