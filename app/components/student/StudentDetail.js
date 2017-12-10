@@ -24,9 +24,6 @@ const StudentDetail = (props) => {
         </NavLink>
       </div>
       <NavLink className="nav-style" to={`/students/update/${currentKid.id}`}>Update Student Information</NavLink>
-      <button
-      type="delete" id="delete" onClick={() => deleteStudent(currentStudent.id)}
-      >Delete Student Record</button>
     </div>
 
   );

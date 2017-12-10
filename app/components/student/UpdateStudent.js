@@ -71,12 +71,13 @@ class UpdateStudent extends React.Component {
    const emailUp = (event.target.email.value ? event.target.email.value : currentKid.email);
    const GPAUp = (event.target.GPA.value ? event.target.GPA.value : currentKid.gpa);
    const campusUp = (event.target.campusId.value ? event.target.campusId.value : currentKid.campusId);
+   console.log('campusUp:', campusUp)
     const updatedstudent = {
       firstName: firstnameUp,
       lastName: lastnameUp,
       email: emailUp,
       gpa: GPAUp,
-      campusId: null
+      campusId: campusUp
     }
     console.log('updated:', updatedstudent)
     this.props.updateStudent(studentId, updatedstudent)

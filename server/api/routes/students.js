@@ -44,7 +44,8 @@ studentRouter.put('/update/:id', (req, res) => {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
-        gpa: +req.body.gpa
+        gpa: +req.body.gpa,
+        campusId: req.body.campusId
       })
     })
     .then(result => res.json(result))
