@@ -51,7 +51,7 @@ class AllStudents extends React.Component {
                 <td className="student-info">{student.email} </td>
                 <td className="student-info">{'       ' + student.gpa + '       '}</td>
                 <td className="student-info"> {campuses(student)[0].name}  </td>
-                <td><NavLink to={`/students/${student.id}`} style={{ textDecoration: 'none' }}>Update Record</NavLink></td>
+                <td><NavLink to={`/students/${student.id}`} style={{ textDecoration: 'none' }}>View Student Details</NavLink></td>
                 <td>
                 <button
                 id="delete" type="delete" onClick={() => deleteStudent(student.id) }>{'     Delete Student     '}</button>

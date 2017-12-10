@@ -11,7 +11,7 @@ class AllCampuses extends React.Component {
 
     this.state = {
       name: '',
-      imgUrl: '',
+      imageUrl: '',
       description: '',
       showForm: false
     };
@@ -40,7 +40,7 @@ class AllCampuses extends React.Component {
             </div>
           );
         })}
-        <button className="campus-wrapper" id="submit" onClick={() => this.hideFunction()}>Add New Campus</button>
+        <button  id="submit" onClick={() => this.hideFunction()}>Add New Campus</button>
         {this.state.showForm ? this.renderNewCampus() : null}
       </section>
     )
@@ -53,6 +53,7 @@ class AllCampuses extends React.Component {
   renderNewCampus() {
     return (
       <section id="campus" >
+      <div className="campus-profile">
         <form onSubmit={this.submit}>
           <div >
             <h2 >
@@ -81,11 +82,12 @@ class AllCampuses extends React.Component {
               />
             </h2>
             <div >
-              <button
+              <button id="submit"
                 type="submit">Submit</button>
             </div>
           </div>
         </form>
+        </div>
         </section>
     );
   }
@@ -94,7 +96,7 @@ class AllCampuses extends React.Component {
     event.preventDefault();
     const campus = {
       name: event.target.name.value,
-      imgUrl: event.target.imgUrl.value,
+      imageUrl: event.target.imgUrl.value,
       description: event.target.description.value,
 
     };

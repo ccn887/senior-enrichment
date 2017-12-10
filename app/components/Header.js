@@ -13,6 +13,7 @@ const Header = (props) => {
       </div>
       <nav>
         <NavLink to={`/`} className="nav-item"> Home</NavLink>
+        <NavLink to={`/campuses`} className="nav-item">Campuses</NavLink>
         <NavLink to={`/students`} className="nav-item">Students</NavLink>
       </nav>
       <div id="app" className="home">

@@ -1,10 +1,10 @@
 import React from 'react';
-import AllCampuses from './campus/AllCampuses'
+import HomeCampuses from './campus/HomeCampuses'
 
 const Home = (props) => {
 return (
   <div id="app" className="home">
-   <AllCampuses />
+   <HomeCampuses />
   </div>
 )}
 
