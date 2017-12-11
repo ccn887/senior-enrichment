@@ -35,7 +35,7 @@ export default class Routes extends Component {
      <Route exact path="/campuses/:campusId" component={CampusDetail} />
      <Route path="/campuses/update/:campusId" component={UpdateCampus} />
      <Route path="/students/update/:studentId" component={UpdateStudent} />
-
+     <Redirect to="/" />
     </Switch>
     </div>
 )

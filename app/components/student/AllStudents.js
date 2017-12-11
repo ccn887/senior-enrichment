@@ -68,10 +68,8 @@ class AllStudents extends React.Component {
     hideFunction() {
       this.state.showForm ?
       this.setState({ showForm: false }) : this.setState({ showForm: true })
-      console.log(this.state.showForm)
   }
       renderNewStudent() {
-        console.log('invoked')
         return (
           <div id="hidden-form">
         <form onSubmit={this.submit}>
