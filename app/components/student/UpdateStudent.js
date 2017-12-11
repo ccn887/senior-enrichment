@@ -1,13 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateStudent, deleteStudent } from '../../reducers/students';
-import { NavLink, withRouter } from 'react-router-dom';
+import { NavLink, withRouter, Route } from 'react-router-dom';
+
 
 /* -----------------    COMPONENT     ------------------ */
 
 class UpdateStudent extends React.Component {
   constructor(props) {
     super(props);
+
 
     this.submit = this.submit.bind(this);
   }
@@ -52,19 +54,21 @@ class UpdateStudent extends React.Component {
           className="form-like"
           placeholder={`current Campus: ${currentKid.campusId}`}
         />
-            <button type="submit" id="submit">Submit Changes</button>
+            <button type="submit" id="submit" >Submit Changes</button>
           </form>
         </div>
       </div>
       </section>
     );
   }
+
   submit(event) {
     const { students } = this.props;
     const studentId = +this.props.match.params.studentId
     const currentStudent = students.filter(student => student.id === studentId);
     const currentKid = currentStudent[0]
-
+    console.log('this.props.history:', this.props.history)
+    const history = this.props.history;
     event.preventDefault();
    const firstnameUp = (event.target.firstname.value ? event.target.firstname.value : currentKid.firstName);
    const lastnameUp = (event.target.lastname.value ? event.target.lastname.value : currentKid.lastName);
@@ -80,8 +84,9 @@ class UpdateStudent extends React.Component {
       campusId: campusUp
     }
     this.props.updateStudent(studentId, updatedstudent)
-  }
+    this.props.history.push('/students')
 
+}
 }
 
 /* -----------------    CONTAINER     ------------------ */

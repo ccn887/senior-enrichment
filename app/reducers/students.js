@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 // ACTION TYPES
 
 const GET_STUDENTS = 'GET_STUDENTS';
@@ -67,7 +66,7 @@ export const addStudent = (student) => dispatch => {
 }
 
 
-export const updateStudent = (id, student) => dispatch => {
+export const updateStudent = (id, student,  history) => dispatch => {
   axios.put(`/api/students/update/${id}`, student)
     .then(res => dispatch(updateStudentCreator(res.data)))
     .catch(err => console.error(`Could not update student:`, err));

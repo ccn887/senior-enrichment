@@ -40,7 +40,7 @@ studentRouter.put('/update/:id', (req, res) => {
     }
   })
     .then(student => {
-      student.update({
+      return student.update({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
@@ -48,6 +48,7 @@ studentRouter.put('/update/:id', (req, res) => {
         campusId: req.body.campusId
       })
     })
+    .then(student => student.reload())
     .then(result => res.json(result))
     .catch(err => res.send(err))
 })

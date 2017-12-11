@@ -36,12 +36,13 @@ campusRouter.put('/update/:id', (req, res) => {
     }
   })
     .then(campus => {
-      campus.update({
+      return campus.update({
         name: req.body.name,
         imageUrl: req.body.imageUrl,
         description: req.body.description
       })
     })
+    .then(campus => campus.reload())
     .then(result => res.json(result))
     .catch(err => res.send(err))
 })

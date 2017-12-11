@@ -58,7 +58,7 @@ class UpdateCampus extends React.Component {
             )}
           </ul>
           <div className="enrolled-students">Enrolled Students</div>
-          <NavLink className="nav-style-student" to={`/students`}>Add Student to Campus
+          <NavLink className="nav-style-student" to={`/students`}>Add/Remove Student
           </NavLink>
       </section>
     )
@@ -78,6 +78,7 @@ class UpdateCampus extends React.Component {
       description: descriptUp
     }
     this.props.updateCampus(campusId, updatedcampus)
+    this.props.history.push('/campuses')
   }
 }
 
