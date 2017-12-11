@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
@@ -41,24 +42,4 @@ export default class Routes extends Component {
 )
 }
 }
-
-/* -----------------    CONTAINER     ------------------ */
-
-// const mapProps = null;
-
-// const mapDispatch = dispatch => ({
-//   fetchInitialData: () => {
-//     dispatch(getCampuses());
-//   }
-//     // dispatch(fetchStories());
-//   //   dispatch(fetchCurrentUser());
-//     // what other data might we want to fetch on app load?
-//   // },
-//   // onStoryEnter: (nextRouterState) => {
-//   //   const storyId = nextRouterState.params.id;
-//   //   dispatch(fetchStory(storyId));
-//   // }
-// });
-
-// export default connect(mapProps, mapDispatch)(Routes);
 
